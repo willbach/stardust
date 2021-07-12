@@ -23,6 +23,11 @@ task("accountsFromWeb3", "Prints accounts", async (_, {web3}) => {
  * @type import('hardhat/config').HardhatUserConfig
  */
 module.exports = {
+    networks: {
+      ganache: {
+        url: "http://localhost:7545",
+      },
+    },
     solidity: {
         compilers: [
             // for legacy code (azimuth)

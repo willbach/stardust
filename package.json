@@ -22,6 +22,7 @@
   },
   "scripts": {
     "compile": "npx hardhat compile",
+    "deploy-dev": "npx hardhat run scripts/deploy-local.js --network ganache",
     "test": "npx hardhat test"
   },
   "repository": {
