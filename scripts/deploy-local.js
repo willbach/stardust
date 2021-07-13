@@ -3,6 +3,8 @@
 //
 // When running the script with `hardhat run <script>` you'll find the Hardhat
 // Runtime Environment's members available in the global scope.
+const fs = require('fs');
+const path = require('path');
 const {ethers} = require("hardhat");
 const {singletons, constants} = require("@openzeppelin/test-helpers");
 
@@ -67,7 +69,16 @@ polls: ${polls.address}
 claims: ${claims.address}
 ecliptic: ${ecliptic.address}
 treasury: ${treasury.address}
-dust: ${tokenAddress}
+    `)
+
+    // write the contract address for use by the frontend
+    fs.writeFileSync(path.join(__dirname, '../../starketplace/.env'),
+    `
+REACT_APP_AZIMUTH_ADDRESS=${azimuth.address}
+REACT_APP_POLLS_ADDRESS=${polls.address}
+REACT_APP_CLAIMS_ADDRESS=${claims.address}
+REACT_APP_ECLIPTIC_ADDRESS=${ecliptic.address}
+REACT_APP_TREASURY_ADDRESS=${treasury.address}
     `)
 }
 
