@@ -12,6 +12,8 @@ const
     PointGalaxyZero  = 0x0,
     PointStarZero    = 0x00000100, // 256, first star of galaxy zero
     PointStarOne     = 0x00000200; // 512, second star of galaxy zero
+    PointStarTwo     = 0x00000300; // 512, second star of galaxy zero
+    PointPlanetZero  = 0x00010100; // 65792, first planet of first star of galaxy zero
 
 async function main() {
   // Hardhat always runs the compile task when running scripts with its command
@@ -61,6 +63,8 @@ OPERATOR: ${operator.address}
 
   await ecliptic.spawn(PointStarZero, creator.address);
   await ecliptic.spawn(PointStarOne, creator.address);
+  await ecliptic.spawn(PointStarTwo, creator.address);
+  await ecliptic.spawn(PointPlanetZero, creator.address);
 
   // log the contract addresses for dev purposes
   console.log(`
