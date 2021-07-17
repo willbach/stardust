@@ -11,8 +11,8 @@ const {singletons, constants} = require("@openzeppelin/test-helpers");
 const
     PointGalaxyZero  = 0x0,
     PointStarZero    = 0x00000100, // 256, first star of galaxy zero
-    PointStarOne     = 0x00000200; // 512, second star of galaxy zero
-    PointStarTwo     = 0x00000300; // 512, second star of galaxy zero
+    PointStarOne     = 0x00000200, // 512, second star of galaxy zero
+    PointStarTwo     = 0x00000300, // 512, second star of galaxy zero
     PointPlanetZero  = 0x00010100; // 65792, first planet of first star of galaxy zero
 
 async function main() {
