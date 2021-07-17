@@ -12,7 +12,8 @@ const
     PointGalaxyZero  = 0x0,
     PointStarZero    = 0x00000100, // 256, first star of galaxy zero
     PointStarOne     = 0x00000200, // 512, second star of galaxy zero
-    PointStarTwo     = 0x00000300, // 512, second star of galaxy zero
+    PointStarTwo     = 0x00000300, // 768, third star of galaxy zero
+    PointStarThree     = 0x00000400, // 1024, fourth star of galaxy zero
     PointPlanetZero  = 0x00010100; // 65792, first planet of first star of galaxy zero
 
 async function main() {
@@ -54,17 +55,38 @@ OPERATOR: ${operator.address}
   await ecliptic.createGalaxy(PointGalaxyZero, creator.address);
 
   await ecliptic.configureKeys(
-      PointGalaxyZero,
-      // these need to be bytes32
-      web3.utils.padLeft(web3.utils.numberToHex(1), 64),
-      web3.utils.padLeft(web3.utils.numberToHex(2), 64),
-      1,
-      false);
+    PointGalaxyZero,
+    // these need to be bytes32
+    web3.utils.padLeft(web3.utils.numberToHex(1), 64),
+    web3.utils.padLeft(web3.utils.numberToHex(2), 64),
+    1,
+    false
+  );
 
   await ecliptic.spawn(PointStarZero, creator.address);
   await ecliptic.spawn(PointStarOne, creator.address);
   await ecliptic.spawn(PointStarTwo, creator.address);
-  await ecliptic.spawn(PointPlanetZero, creator.address);
+  await ecliptic.spawn(PointStarThree, creator.address);
+
+  await ecliptic.configureKeys(
+    PointStarZero,
+    // these need to be bytes32
+    web3.utils.padLeft(web3.utils.numberToHex(1), 64),
+    web3.utils.padLeft(web3.utils.numberToHex(2), 64),
+    1,
+    false
+  );
+
+  await ecliptic.configureKeys(
+    PointStarOne,
+    // these need to be bytes32
+    web3.utils.padLeft(web3.utils.numberToHex(1), 64),
+    web3.utils.padLeft(web3.utils.numberToHex(2), 64),
+    1,
+    false
+  );
+  
+  await ecliptic.spawn(0x00010100, creator.address);
 
   // log the contract addresses for dev purposes
   console.log(`
