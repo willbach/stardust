@@ -24,8 +24,11 @@ task("accountsFromWeb3", "Prints accounts", async (_, {web3}) => {
  */
 module.exports = {
     networks: {
-      ganache: {
+      ganache: { // For Ganache desktop program
         url: "http://localhost:7545",
+      },
+      hardhat: {
+        chainId: 1337
       },
     },
     solidity: {

@@ -22,7 +22,9 @@
   },
   "scripts": {
     "compile": "npx hardhat compile",
-    "deploy-dev": "npx hardhat run scripts/deploy-local.js --network ganache",
+    "dev-network": "npx hardhat node > /dev/null &",
+    "deploy-dev": "npx hardhat run scripts/deploy-local.js --network localhost",
+    "dev": "npm run dev-network && npm run deploy-dev",
     "test": "npx hardhat test"
   },
   "repository": {
